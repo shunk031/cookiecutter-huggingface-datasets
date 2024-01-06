@@ -1,0 +1,18 @@
+{
+    "dataset_name": "dataset_name",
+    "dataset_version": "1.0.0",
+    "module_name": "huggingface-datasets-{{ cookiecutter.dataset_name.lower() }}",
+    "citation": "Please input citation information",
+    "description": "Please input description",
+    "homepage": "Please input homepage information",
+    "license": "Please input license information",
+    "datasets_type": [
+        "table",
+        "vision"
+    ],
+    "github_user": "shunk031",
+    "repository_url": "https://github.com/{{ cookiecutter.github_user }}/huggingface-datasets_{{ cookiecutter.dataset_name }}",
+    "arxiv_url": "Please input arXiv URL",
+    "publication_url": "Please input publication URL",
+    "publication_venue": "Please input publication venue"
+}
