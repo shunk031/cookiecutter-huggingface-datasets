@@ -17,12 +17,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Check for TODO and FIXME
+        run: |
+          if grep --exclude-dir={.git,.github} -rE "TODO|FIXME"; then
+              exit 1
+          fi
+
       {%- raw %}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
       {%- endraw %}
+
       - name: Install dependencies
         run: |
           pip install -U pip setuptools wheel poetry
