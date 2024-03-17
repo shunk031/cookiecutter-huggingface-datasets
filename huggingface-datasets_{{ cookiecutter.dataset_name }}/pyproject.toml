@@ -8,9 +8,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
 {% if cookiecutter.datasets_type == "vision" -%}
-datasets = {extras = ["vision"], version = "^1.0.0"}
+datasets = {extras = ["vision"], version = ">=1.0.0"}
 {%- else -%}
-datasets = "^1.0.0"
+datasets = ">=1.0.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
