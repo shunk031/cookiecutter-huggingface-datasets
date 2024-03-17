@@ -20,6 +20,10 @@ isort = ">=5.0.0"
 mypy = ">=1.0.0"
 pytest = ">=6.0.0"
 
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
