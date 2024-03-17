@@ -1,6 +1,7 @@
 {
     "dataset_name": "dataset_name",
     "dataset_version": "1.0.0",
+    "python_version": "3.9",
     "module_name": "huggingface-datasets-{{ cookiecutter.dataset_name.lower() }}",
     "citation": "Please input citation information",
     "description": "Please input description",

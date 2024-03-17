@@ -6,7 +6,7 @@ authors = ["Shunsuke KITADA <shunsuke.kitada.0831@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^{{ cookiecutter.python_version }}"
 {% if cookiecutter.datasets_type == "vision" -%}
 datasets = {extras = ["vision"], version = "^1.0.0"}
 {%- else -%}
@@ -21,7 +21,7 @@ mypy = ">=1.0.0"
 pytest = ">=6.0.0"
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "{{ cookiecutter.python_version }}"
 ignore_missing_imports = true
 
 [build-system]
