@@ -1,3 +1,5 @@
+import sys
+
 import pytest
 from pytest_cookies.plugin import Cookies
 
@@ -18,6 +20,11 @@ def citation() -> str:
   note={URL or other relevant information}
 }
 """
+
+
+@pytest.fixture
+def python_version() -> str:
+    return f"{sys.version_info.major}.{sys.version_info.minor}"
 
 
 @pytest.fixture
@@ -57,6 +64,7 @@ def publication_venue() -> str:
 def test_bake_project(
     cookies: Cookies,
     dataset_name: str,
+    python_version: str,
     citation: str,
     description: str,
     homepage: str,
@@ -69,6 +77,7 @@ def test_bake_project(
     result = cookies.bake(
         extra_context={
             "dataset_name": dataset_name,
+            "python_version": python_version,
             "citation": citation,
             "description": description,
             "homepage": homepage,
