@@ -4,6 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Shunsuke KITADA <shunsuke.kitada.0831@gmail.com>"]
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^{{ cookiecutter.python_version }}"
