@@ -20,7 +20,14 @@ jobs:
 
       - name: Check for TODO and FIXME
         run: |
-          if grep --exclude-dir={.git,.github} -rE "TODO|FIXME"; then
+          grep -n --exclude-dir={.git,.github} -rE "FIXME" | while read -r line
+          do
+              file=$(echo $line | cut -d: -f1)
+              lineno=$(echo $line | cut -d: -f2)
+              echo "::warning file=$file,line=$lineno::${line}"
+          done
+
+          if grep --exclude-dir={.git,.github} -rE "TODO"; then
               exit 1
           fi
 
