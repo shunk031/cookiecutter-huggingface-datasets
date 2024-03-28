@@ -24,6 +24,7 @@ pytest = ">=6.0.0"
 [tool.mypy]
 python_version = "{{ cookiecutter.python_version }}"
 ignore_missing_imports = true
+no_strict_optional = true
 
 [build-system]
 requires = ["poetry-core"]
