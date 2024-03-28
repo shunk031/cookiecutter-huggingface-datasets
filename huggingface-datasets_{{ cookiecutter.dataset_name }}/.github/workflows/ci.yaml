@@ -53,11 +53,7 @@ jobs:
 
       - name: Type check
         run: |
-          poetry run mypy . \
-            --ignore-missing-imports \
-            --no-strict-optional \
-            --no-site-packages \
-            --cache-dir=/dev/null
+          poetry run mypy .
 
       - name: Run tests
         run: |
