@@ -27,7 +27,7 @@ logger = get_logger(__name__)
 # TODO: Add BibTeX citation
 # Find for instance the citation on arxiv or on the dataset repo/website
 _CITATION = """\
-{{ cookiecutter.citation }}
+TODO: Add BibTeX citation here
 """
 
 # TODO: Add description of the dataset here
@@ -50,9 +50,11 @@ _URLS = {
     "second_domain": "https://huggingface.co/great-new-dataset-second_domain.zip",
 }
 
+
 # TODO: Name of the dataset usually matches the script name with CamelCase instead of snake_case
 class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Dataset', '') }}Dataset(ds.GeneratorBasedBuilder):
     """A class for loading {{ cookiecutter.dataset_name }} dataset."""
+
     VERSION = ds.Version("{{ cookiecutter.dataset_version }}")
 
     # This is an example of a dataset with multiple configurations.
@@ -67,17 +69,25 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
     # data = datasets.load_dataset('my_dataset', 'first_domain')
     # data = datasets.load_dataset('my_dataset', 'second_domain')
     BUILDER_CONFIGS = [
-        ds.BuilderConfig(name="first_domain", version=VERSION, description="This part of my dataset covers a first domain"),
-        ds.BuilderConfig(name="second_domain", version=VERSION, description="This part of my dataset covers a second domain"),
+        ds.BuilderConfig(
+            name="first_domain", 
+            version=VERSION, 
+            description="This part of my dataset covers a first domain"
+        ),
+        ds.BuilderConfig(
+            name="second_domain", 
+            version=VERSION, 
+            description="This part of my dataset covers a second domain"
+        ),
     ]
 
     DEFAULT_CONFIG_NAME = "first_domain"  # It's not mandatory to have a default configuration. Just use one if it make sense.
-    
+
     @property
     def _manual_download_instructions(self) -> str:
-        # Certain datasets require you to manually download the dataset files due to licensing incompatibility or 
-        # if the files are hidden behind a login page. This causes load_dataset() to throw an AssertionError. 
-        # But 🤗 Datasets provides detailed instructions for downloading the missing files. After you’ve downloaded the files, 
+        # Certain datasets require you to manually download the dataset files due to licensing incompatibility or
+        # if the files are hidden behind a login page. This causes load_dataset() to throw an AssertionError.
+        # But 🤗 Datasets provides detailed instructions for downloading the missing files. After you’ve downloaded the files,
         # use the data_dir argument to specify the path to the files you just downloaded.
         # For example, if you try to download a configuration from the MATINF dataset:
         #
@@ -97,7 +107,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
         # TODO: This method specifies the datasets.DatasetInfo object which contains informations and typings for the dataset
         features = ds.Features(
             # You need to define the internal structure of your dataset here
-        ) 
+        )
         return ds.DatasetInfo(
             # This is the description that will appear on the datasets page.
             description=_DESCRIPTION,
@@ -130,7 +140,9 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
             )
         return dl_manager.extract(dir_path)
 
-    def _split_generators(self, dl_manager: ds.DownloadManager) -> List[ds.SplitGenerator]:
+    def _split_generators(
+        self, dl_manager: ds.DownloadManager,
+    ) -> List[ds.SplitGenerator]:
         # TODO: This method is tasked with downloading/extracting the data and defining the splits depending on the configuration
         # If several configurations are possible (listed in BUILDER_CONFIGS), the configuration selected by the user is in self.config.name
 
@@ -141,7 +153,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
         data_dir = dl_manager.download_and_extract(urls)
         return [
             ds.SplitGenerator(
-                name=ds.Split.TRAIN,
+                name=ds.Split.TRAIN, # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "train.jsonl"),
@@ -149,7 +161,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                 },
             ),
             ds.SplitGenerator(
-                name=ds.Split.VALIDATION,
+                name=ds.Split.VALIDATION, # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "dev.jsonl"),
@@ -157,11 +169,11 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                 },
             ),
             ds.SplitGenerator(
-                name=ds.Split.TEST,
+                name=ds.Split.TEST, # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "test.jsonl"),
-                    "split": "test"
+                    "split": "test",
                 },
             ),
         ]
