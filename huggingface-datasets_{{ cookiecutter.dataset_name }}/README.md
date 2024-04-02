@@ -50,8 +50,8 @@ TODO: YAML tags (full spec here: https://github.com/huggingface/hub-docs/blob/ma
 {%- if not cookiecutter.publication_url.startswith("Please") and not cookiecutter.publication_venue.startswith("Please") %}
 - **Paper ({{ cookiecutter.publication_venue }}):** {{ cookiecutter.publication_url }}
 {%- endif %}
-- **Leaderboard:** [If the dataset supports an active leaderboard, add link here]()
-- **Point of Contact:** [If known, name and email of at least one person the reader can contact for questions about the dataset.]()
+- **Leaderboard:** [TODO: If the dataset supports an active leaderboard, add link here]()
+- **Point of Contact:** [TODO: If known, name and email of at least one person the reader can contact for questions about the dataset.]()
 
 ### Dataset Summary
 
@@ -244,9 +244,9 @@ If analyses have been run quantifying these biases, please add brief summaries a
 If the dataset has a [DOI](https://www.doi.org/), please provide it here. -->
 
 ```bibtex
-{{ cookiecutter.citation }}
+TODO: Add BibTeX citation here
 ```
 
 ### Contributions
 
-<!-- Thanks to [@github-username](https://github.com/<github-username>) for adding this dataset. -->
+<!-- TODO: Thanks to [@github-username](https://github.com/<github-username>) for adding this dataset. -->
