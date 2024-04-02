@@ -59,4 +59,4 @@ jobs:
       - name: Check format
         run: |
           pip install black
-          black --check huggingface-datasets_TestHfDataset
+          black --check --diff huggingface-datasets_TestHfDataset
