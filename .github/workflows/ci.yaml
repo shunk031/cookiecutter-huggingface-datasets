@@ -45,18 +45,16 @@ jobs:
         with:
           python-version: "3.9"
 
+      - name: Install dependencies
+        run: |
+          pip install -U cookiecutter black
+
       - name: Bake the project
         run: |
-          pip install cookiecutter
           cookiecutter ./cookiecutter-huggingface-datasets \
             --no-input \
             --config-file ./cookiecutter-huggingface-datasets/test_fixtures/config.yaml
 
-      - run: |
-          ls
-          ls cookiecutter-huggingface-datasets/test_fixtures/
-
       - name: Check format
         run: |
-          pip install black
           black --check --diff huggingface-datasets_TestHfDataset
