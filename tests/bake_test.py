@@ -41,6 +41,7 @@ def test_config(config_path: pathlib.Path) -> Dict[str, str]:
 def test_bake_project(
     cookies: Cookies,
     python_version: str,
+    datasets_type: str,
     test_config: Dict[str, str],
 ) -> None:
 
@@ -49,6 +50,7 @@ def test_bake_project(
     result = cookies.bake(
         extra_context={
             **extra_context,  # type: ignore
+            "dataset_type": datasets_type,
             "python_version": python_version,
         },
     )
