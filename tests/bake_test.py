@@ -1,6 +1,7 @@
 import sys
 
 import pytest
+import yaml
 from pytest_cookies.plugin import Cookies
 
 
@@ -29,7 +30,7 @@ def python_version() -> str:
 
 @pytest.fixture
 def description() -> str:
-    return "TestDataset is a sample dataset for artificial intelligence experiments and evaluations, containing labeled images for image recognition tasks."
+    return "TestHfDataset is a sample dataset for artificial intelligence experiments and evaluations, containing labeled images for image recognition tasks."
 
 
 @pytest.fixture
@@ -54,7 +55,7 @@ def publication_url() -> str:
 
 @pytest.fixture
 def publication_venue() -> str:
-    return "Publication Venue: Journal of Artificial Intelligence Research"
+    return "Journal of Cookiecutter Test"
 
 
 @pytest.mark.parametrize(
@@ -74,23 +75,14 @@ def test_bake_project(
     publication_url: str,
     publication_venue: str,
 ) -> None:
-    result = cookies.bake(
-        extra_context={
-            "dataset_name": dataset_name,
-            "python_version": python_version,
-            "citation": citation,
-            "description": description,
-            "homepage": homepage,
-            "license": dataset_license,
-            "datasets_type": datasets_type,
-            "arxiv_url": arxiv_url,
-            "publication_url": publication_url,
-            "publication_venue": publication_venue,
-        }
-    )
+    result = cookies.bake(extra_context={"python_version": python_version})
+    breakpoint()
+
     assert result.exit_code == 0
     assert result.exception is None
 
     assert result.project_path is not None
     assert result.project_path.name == f"huggingface-datasets_{dataset_name}"
     assert result.project_path.is_dir()
+
+    breakpoint()

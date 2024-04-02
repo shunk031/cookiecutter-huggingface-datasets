@@ -31,7 +31,7 @@ jobs:
               exit 1
           fi
 
-      {%- raw %}
+      {% raw %}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:

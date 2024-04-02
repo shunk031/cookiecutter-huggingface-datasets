@@ -11,6 +11,7 @@
         "vision"
     ],
     "github_user": "creative-graphic-design",
+    "hf_user": "{{ cookiecutter.github_user }}",
     "repository_url": "https://github.com/{{ cookiecutter.github_user }}/huggingface-datasets_{{ cookiecutter.dataset_name }}",
     "arxiv_url": "Please input arXiv URL",
     "publication_url": "Please input publication URL",
