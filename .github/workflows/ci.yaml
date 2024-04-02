@@ -52,6 +52,9 @@ jobs:
             --no-input \
             --config-file ./cookiecutter-huggingface-datasets/test_fixtures/config.yaml
 
+      - run: |
+          ls
+
       - name: Check format
         run: |
           pip install black
