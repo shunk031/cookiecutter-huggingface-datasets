@@ -70,14 +70,14 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
     # data = datasets.load_dataset('my_dataset', 'second_domain')
     BUILDER_CONFIGS = [
         ds.BuilderConfig(
-            name="first_domain", 
-            version=VERSION, 
-            description="This part of my dataset covers a first domain"
+            name="first_domain",
+            version=VERSION,
+            description="This part of my dataset covers a first domain",
         ),
         ds.BuilderConfig(
-            name="second_domain", 
-            version=VERSION, 
-            description="This part of my dataset covers a second domain"
+            name="second_domain",
+            version=VERSION,
+            description="This part of my dataset covers a second domain",
         ),
     ]
 
@@ -141,7 +141,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
         return dl_manager.extract(dir_path)
 
     def _split_generators(
-        self, dl_manager: ds.DownloadManager,
+        self, dl_manager: ds.DownloadManager
     ) -> List[ds.SplitGenerator]:
         # TODO: This method is tasked with downloading/extracting the data and defining the splits depending on the configuration
         # If several configurations are possible (listed in BUILDER_CONFIGS), the configuration selected by the user is in self.config.name
@@ -153,7 +153,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
         data_dir = dl_manager.download_and_extract(urls)
         return [
             ds.SplitGenerator(
-                name=ds.Split.TRAIN, # type: ignore
+                name=ds.Split.TRAIN,  # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "train.jsonl"),
@@ -161,7 +161,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                 },
             ),
             ds.SplitGenerator(
-                name=ds.Split.VALIDATION, # type: ignore
+                name=ds.Split.VALIDATION,  # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "dev.jsonl"),
@@ -169,7 +169,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                 },
             ),
             ds.SplitGenerator(
-                name=ds.Split.TEST, # type: ignore
+                name=ds.Split.TEST,  # type: ignore
                 # These kwargs will be passed to _generate_examples
                 gen_kwargs={
                     "filepath": os.path.join(data_dir, "test.jsonl"),
@@ -196,5 +196,7 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                     yield key, {
                         "sentence": data["sentence"],
                         "option2": data["option2"],
-                        "second_domain_answer": "" if split == "test" else data["second_domain_answer"],
+                        "second_domain_answer": (
+                            "" if split == "test" else data["second_domain_answer"]
+                        ),
                     }
