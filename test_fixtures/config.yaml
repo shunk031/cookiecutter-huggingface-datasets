@@ -1,0 +1,12 @@
+default_context:
+  dataset_name: "TestHfDataset"
+  dataset_version: "1.0.0"
+  python_version: "3.9"
+  module_name: "huggingface-datasets-testhfdataset"
+  description: "TestHfDataset is a sample dataset for artificial intelligence experiments and evaluations, containing labeled images for image recognition tasks."
+  homepage: "https://www.testdataset.com"
+  license: "This dataset is released under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)."
+  dataset_type: "vision"
+  github_user: "creative-graphic-design"
+  arxiv_url: "https://arxiv.org/abs/XXXX.XXXXX"
+  publication_venue: "Journal of Cookiecutter Test"
