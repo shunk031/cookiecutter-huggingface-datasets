@@ -1,6 +1,7 @@
 # 🍪 Cookiecutter Huggingface Datasets 🤗
 
 [![CI](https://github.com/shunk031/cookiecutter-huggingface-datasets/actions/workflows/ci.yaml/badge.svg)](https://github.com/shunk031/cookiecutter-huggingface-datasets/actions/workflows/ci.yaml)
+[![Cookiecutter](https://img.shields.io/badge/🍪%20cookiecutter-template-D4AA00)](https://github.com/cookiecutter/cookiecutter)
 
 This is a [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for creating script for [huggingface datasets](https://github.com/huggingface/datasets).
 
