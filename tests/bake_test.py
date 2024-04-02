@@ -40,14 +40,15 @@ def test_config(config_path: pathlib.Path) -> Dict[str, str]:
 )
 def test_bake_project(
     cookies: Cookies,
-    dataset_name: str,
     python_version: str,
     test_config: Dict[str, str],
 ) -> None:
 
+    extra_context = test_config["default_context"]
+
     result = cookies.bake(
         extra_context={
-            **test_config["default_context"],  # type: ignore
+            **extra_context,  # type: ignore
             "python_version": python_version,
         },
     )
@@ -56,5 +57,8 @@ def test_bake_project(
     assert result.exception is None
 
     assert result.project_path is not None
-    assert result.project_path.name == f"huggingface-datasets_{dataset_name}"
+    assert (
+        result.project_path.name
+        == f"huggingface-datasets_{extra_context['dataset_name']}"  # type: ignore
+    )
     assert result.project_path.is_dir()
