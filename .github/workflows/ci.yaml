@@ -54,6 +54,7 @@ jobs:
 
       - run: |
           ls
+          ls cookiecutter-huggingface-datasets/test_fixtures/
 
       - name: Check format
         run: |
