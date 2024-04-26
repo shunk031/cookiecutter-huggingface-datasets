@@ -32,7 +32,7 @@ jobs:
         run: |
           pytest tests/
 
-  format:
+  format-lint:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -47,7 +47,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -U cookiecutter black
+          pip install -U cookiecutter ruff
 
       - name: Bake the project
         run: |
@@ -55,6 +55,10 @@ jobs:
             --no-input \
             --config-file ./cookiecutter-huggingface-datasets/test_fixtures/config.yaml
 
-      - name: Check format
+      - name: Format
         run: |
-          black --check --diff huggingface-datasets_TestHfDataset
+          ruff format --check --diff huggingface-datasets_TestHfDataset
+
+      - name: Lint
+        run: |
+          ruff check --output-format=github huggingface-datasets_TestHfDataset

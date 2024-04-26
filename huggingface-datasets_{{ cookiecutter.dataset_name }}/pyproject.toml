@@ -15,16 +15,13 @@ datasets = ">=1.0.0"
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
-ruff = ">=0.1.0"
-black = ">=22.1.0"
-isort = ">=5.0.0"
+ruff = ">=0.1.5"
 mypy = ">=1.0.0"
 pytest = ">=6.0.0"
 
 [tool.mypy]
 python_version = "{{ cookiecutter.python_version }}"
 ignore_missing_imports = true
-no_strict_optional = true
 
 [build-system]
 requires = ["poetry-core"]

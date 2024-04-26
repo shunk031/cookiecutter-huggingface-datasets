@@ -187,16 +187,22 @@ class {{ cookiecutter.dataset_name.replace('-', '').replace('_', '').replace('Da
                 data = json.loads(row)
                 if self.config.name == "first_domain":
                     # Yields examples as (key, example) tuples
-                    yield key, {
-                        "sentence": data["sentence"],
-                        "option1": data["option1"],
-                        "answer": "" if split == "test" else data["answer"],
-                    }
+                    yield (
+                        key,
+                        {
+                            "sentence": data["sentence"],
+                            "option1": data["option1"],
+                            "answer": "" if split == "test" else data["answer"],
+                        },
+                    )
                 else:
-                    yield key, {
-                        "sentence": data["sentence"],
-                        "option2": data["option2"],
-                        "second_domain_answer": (
-                            "" if split == "test" else data["second_domain_answer"]
-                        ),
-                    }
+                    yield (
+                        key,
+                        {
+                            "sentence": data["sentence"],
+                            "option2": data["option2"],
+                            "second_domain_answer": (
+                                "" if split == "test" else data["second_domain_answer"]
+                            ),
+                        },
+                    )
