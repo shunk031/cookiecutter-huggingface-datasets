@@ -33,6 +33,6 @@ def repo_id(org_name: str, dataset_name: str) -> str:
 )
 def test_load_dataset(dataset_path: str, repo_id: str):
     dataset = ds.load_dataset(path=dataset_path)
-
     assert isinstance(dataset, ds.DatasetDict)
-    dataset.push_to_hub(repo_id=repo_id, private=True)
+
+    # dataset.push_to_hub(repo_id=repo_id, private=True)
