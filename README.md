@@ -6,6 +6,10 @@
 
 This is a [cookiecutter](https://github.com/cookiecutter/cookiecutter) template for creating script for [huggingface datasets](https://github.com/huggingface/datasets).
 
+## Policy
+
+- We decide the minimum version of Python according to [the Python official Supported Versions](https://devguide.python.org/versions/#supported-versions).
+
 ## Usage
 
 - Install `cookiecutter`:
