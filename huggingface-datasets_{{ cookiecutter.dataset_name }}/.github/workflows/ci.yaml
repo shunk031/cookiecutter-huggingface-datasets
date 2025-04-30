@@ -31,6 +31,9 @@ jobs:
               exit 1
           fi
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
       {% raw %}
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
@@ -38,23 +41,18 @@ jobs:
           python-version: ${{ matrix.python-version }}
       {%- endraw %}
 
-      - name: Install dependencies
-        run: |
-          pip install -U pip setuptools wheel poetry
-          poetry install
-
       - name: Format
         run: |
-          poetry run ruff format --check --diff .
+          uv run ruff format --check --diff .
 
       - name: Lint
         run: |
-          poetry run ruff check --output-format=github .
+          uv run ruff check --output-format=github .
 
       - name: Type check
         run: |
-          poetry run mypy .
+          uv run mypy .
 
       - name: Run tests
         run: |
-          poetry run pytest --color=yes -rf
+          uv run pytest --color=yes -rf
