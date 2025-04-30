@@ -6,11 +6,11 @@ readme = "README.md"
 requires-python = ">={{ cookiecutter.python_version }}"
 
 dependencies = [
-{% if cookiecutter.datasets_type == "vision" -%}
-    "datasets[vision]>=2.0.0"
-{%- else -%}
+{%- if cookiecutter.datasets_type == "table" -%}
     "datasets>=2.0.0"
-{%- endif %}
+{%- elif cookiecutter.datasets_type == "vision" -%}
+    "datasets[vision]>=2.0.0"
+{%- endif -%}
 ]
 
 [dependency-groups]
