@@ -1,29 +1,21 @@
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.module_name }}"
 version = "0.1.0"
-description = ""
-authors = ["Shunsuke KITADA <shunsuke.kitada.0831@gmail.com>"]
+description = "{{ cookiecutter.description }}"
 readme = "README.md"
-package-mode = false
+requires-python = ">={{ cookiecutter.python_version }}"
 
-[tool.poetry.dependencies]
-python = "^{{ cookiecutter.python_version }}"
-{% if cookiecutter.datasets_type == "vision" -%}
-datasets = { extras = ["vision"], version = ">=1.0.0" }
-{%- else -%}
-datasets = ">=1.0.0"
-{%- endif %}
+dependencies = [
+{%- if cookiecutter.datasets_type == "table" -%}
+    "datasets>=2.0.0"
+{%- elif cookiecutter.datasets_type == "vision" -%}
+    "datasets[vision]>=2.0.0"
+{%- endif -%}
+]
 
-[tool.poetry.group.dev.dependencies]
-ruff = ">=0.1.5"
-mypy = ">=1.0.0"
-pytest = ">=6.0.0"
+[dependency-groups]
+dev = ["mypy>=1.0.0", "pytest>=6.0.0", "ruff>=0.5.0"]
 
 [tool.mypy]
 python_version = "{{ cookiecutter.python_version }}"
 ignore_missing_imports = true
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
