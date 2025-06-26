@@ -39,7 +39,7 @@ _DESCRIPTION = """\
 # TODO: Add a link to an official homepage for the dataset here
 _HOMEPAGE = "{{ cookiecutter.homepage }}"
 
-# TODO: Add the licence for the dataset here if you can find it
+# TODO: Add the license for the dataset here if you can find it
 _LICENSE = "{{ cookiecutter.license }}"
 
 # TODO: Add link to the official dataset URLs here
